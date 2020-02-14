@@ -1,0 +1,40 @@
+{
+    "name": "lipstick-detector",
+    "version": "0.1.0",
+    "license": "AGPL-3.0",
+    "author": "shiy2008@gmail.com",
+    "private": true,
+    "main": "source/index.html",
+    "dependencies": {
+        "boot-cell": "^0.30.0",
+        "classnames": "^2.2.6",
+        "web-cell": "^2.0.0-rc.18"
+    },
+    "devDependencies": {
+        "husky": "^4.2.3",
+        "lint-staged": "^10.0.7",
+        "parcel-bundler": "^1.12.4",
+        "prettier": "^1.19.1",
+        "typescript": "^3.7.5"
+    },
+    "prettier": {
+        "singleQuote": true,
+        "tabWidth": 4
+    },
+    "lint-staged": {
+        "*.{html,md,json,ts,tsx}": [
+            "prettier --write"
+        ]
+    },
+    "scripts": {
+        "test": "lint-staged",
+        "start": "parcel source/index.html --open",
+        "build": "parcel build source/index.html --public-url ."
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "npm test",
+            "pre-push": "npm run build"
+        }
+    }
+}
